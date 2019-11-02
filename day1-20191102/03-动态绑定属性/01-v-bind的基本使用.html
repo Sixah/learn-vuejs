@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <!-- 错误的做法，这里不可以使用mustache语法-->
+    <!-- <img src="{{imgURL}}" alt=""> -->
+    <!-- 正确的做法，使用v-bind指令-->
+    <a :href="url"><img v-bind:src="imgURL" alt=""></a>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    // v-bind 的简写 ：
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        imgURL: 'https://puui.qpic.cn/tv/0/40823072_100100/0',
+        url: 'https://v.qq.com/cartoon/p/topic/modao2019/index.html'
+      }
+    })
+  </script>
+</body>
+</html>
