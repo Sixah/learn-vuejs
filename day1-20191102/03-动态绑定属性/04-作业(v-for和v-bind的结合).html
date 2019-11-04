@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li :class="" v-for="(item,index) in movies">{{item}}</li>
+    </ul>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        movies: ['海王','海尔兄弟','火影忍者','进击的巨人']
+      },
+      methods: {
+        check: function () {
+          return {}
+        }
+      }
+    })
+  </script>
+</body>
+</html>

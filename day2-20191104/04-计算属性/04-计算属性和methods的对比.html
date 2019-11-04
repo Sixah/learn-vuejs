@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <!--1.直接拼接： 语法过于繁琐-->
+    <h2>{{firstName}} {{lastName}}</h2>
+    <!--2.通过定义methods-->
+    <h2>{{getFullName()}}</h2>
+    <!--3.通过定义computed-->
+    <h2>{{fullName}}</h2>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        firstName: 'Kobe',
+        lastName: 'Bryant'
+      },
+      // 计算属性有缓存，如果有多处调用，代码只会执行一次 性能会更好一些
+      computed: {
+        fullName: function () {
+          return this.firstName + ' ' + this.lastName
+        }
+      },
+      // 方法没有缓存，如果有多处调用，代码会多次调用 性能会差一些
+      methods: {
+        getFullName: function () {
+          return this.firstName + ' ' + this.lastName
+        }
+      }
+    })
+  </script>
+</body>
+</html>

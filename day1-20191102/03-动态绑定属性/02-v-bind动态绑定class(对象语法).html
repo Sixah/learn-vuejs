@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active {
+      color: red;
+    }
+    .line {
+      color: blue;
+    }
+    .textSize {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2 class="active">{{message}}</h2>
+    <h2 :class="active">{{message}}</h2>
+    <!--
+    <h2 v-bind:class="{key1: value1. key2 value2}">{{message}}</h2>
+    <h2 v-bind:class="{类名1： boolean, 类名2： boolean}">{{message}}</h2>
+     -->
+    <h2 v-bind:class="{active: true, line: false}">{{message}}</h2>
+    <h2 class="textSize" v-bind:class="{active: isActive, line: isLine}">{{message}}</h2>
+    <!-- 固定不变的class可以单独列出，动态绑定的class不会覆盖，会自动合并 -->
+    <h2 class="textSize" v-bind:class="getClass()">{{message}}</h2>
+    <button @click="sheet">变基</button>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        active: 'active',
+        isActive: true,
+        isLine: true,
+      },
+      methods: {
+        sheet: function () {
+          this.isLine = !this.isLine
+        },
+        getClass: function () {
+          return {active: this.isActive, line: this.isLine}
+        }
+      }
+    })
+  </script>
+</body>
+</html>

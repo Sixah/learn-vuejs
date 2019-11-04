@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <ul>
+      <li v-for="item in books">{{item.name}}</li>
+    </ul>
+    <span>总价格： {{totalPrice}}</span>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        books: [
+          {id:110,name:'Uinx编程艺术',price:119},
+          {id:112,name:'代码大全',price:121},
+          {id:95,name:'深入理解计算机原理',price:139},
+          {id:89,name:'现代操作系统',price:110},
+        ]
+      },
+      computed: {
+        // filter/map/reduce
+        totalPrice: function () {
+          let result = 0;
+          for (let i=0;i<this.books.length;i++) {
+            result += this.books[i].price
+          }
+          return result
+
+          // i为每个元素的下标
+          // for (let i in this.books) {}
+
+          // book为每个元素的值
+          // for (let book of this.books) {}
+
+        }
+      }
+    })
+  </script>
+</body>
+</html>
