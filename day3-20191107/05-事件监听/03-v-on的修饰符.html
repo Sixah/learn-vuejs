@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <!-- .stop修饰符的作用
+    点击div里的按钮，不会触发div的点击事件，只有点击div的其他位置才会触发div点击事件 -->
+    <div @click="divclick">
+      这里有个按钮
+      <button @click.stop="btnclick">按钮</button>
+    </div>
+
+    <!-- .prevent修饰符的使用
+    不使用默认的提交，而使用自己写的方法提交-->
+    <form action="baidu">
+      <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+
+    <!-- 监听某个键盘的键帽
+    .enter 监听回车键的抬起-->
+    <input type="text" @keyup.enter="keyUp">
+
+    <!-- .once修饰符的使用
+    只会监听一次点击事件-->
+    <button @click.once="btn2click">按钮2</button>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！'
+      },
+      methods: {
+        divclick() {
+          console.log('divclick');
+        },
+        btnclick() {
+          console.log('btnclick');
+        },
+        submitClick() {
+          console.log('submitClick');
+        },
+        keyUp() {
+          console.log("keyUp");
+        },
+        btn2click() {
+          console.log('btn2.click');
+        }
+
+      }
+    })
+  </script>
+</body>
+</html>

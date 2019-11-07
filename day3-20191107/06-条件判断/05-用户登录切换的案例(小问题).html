@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <span v-if="isUser">
+      <label for="username">用户帐号</label>
+      <input type="text" id="username" placeholder="用户帐号" key="username">
+      <!--加key可以解决input元素复用，导致输入的值在切换的时候不会被清空的问题-->
+    </span>
+    <span v-else>
+      <label for="usermail">用户邮箱</label>
+      <input type="text" id="usermail" placeholder="用户邮箱" key="usermail">
+    </span>
+    <button @click="edit">其它登录</button>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        isUser: true
+      },
+      methods: {
+        edit() {
+          this.isUser = !this.isUser;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

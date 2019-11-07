@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2>{{counter}}</h2>
+    <!--
+    <button v-on:click="counter++">+</button>
+    <button v-on:click="counter--">-</button>
+    -->
+
+    <!--
+    <button v-on:click="increment">+</button>
+    <button v-on:click="decrement">-</button>
+    -->
+
+    <!--
+    v-on 语法糖(简写) @
+    v-bind 语法糖(简写) :
+    在事件监听中，如果调用的函数没有参数，函数名后面的()可以省略，有参数则必须带()调用
+    -->
+
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        counter:0
+      },
+      methods: {
+        increment() {
+          this.counter++
+        },
+        decrement() {
+          this.counter--
+        }
+      }
+    })
+  </script>
+</body>
+</html>
