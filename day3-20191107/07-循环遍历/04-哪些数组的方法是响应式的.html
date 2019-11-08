@@ -41,10 +41,10 @@
           // 替换元素 第二个参数,表示我们要替换几个元素,后面的参数是用于替换前面的元素
           // 插入元素 第二个参数传0, 后面的参数是用于插入的元素
 
-          // 6.sort
+          // 6.sort 对数组进行排序
           this.letters.sort()
 
-          // 7.reverse
+          // 7.reverse 对数组进行反转
           this.letters.reverse()
           // 通过索引值修改元素中的元素(非响应式)
           // this.letters[0] = 'sixah';
@@ -58,9 +58,11 @@
     })
 
     // 可变参数
-    function sum(...num) {
-
+    function sum(...nums) {
+      console.log(nums);
     }
+
+    sum(1,2,3,4,5,6,7,8,9)
 
   </script>
 </body>

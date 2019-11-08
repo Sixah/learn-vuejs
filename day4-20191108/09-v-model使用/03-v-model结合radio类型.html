@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <label for="male">
+      <input type="radio" id="male" name="sex" value="男" v-model="sex">男
+    </label>
+    <!--name属性一致时，两个单选框会互斥-->
+    <label for="female">
+      <input type="radio" id="female" name="sex" value="女" v-model="sex">女
+    </label>
+    <h2>您选择的性别是： {{sex}}</h2>
+  </div>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        sex: '男'
+      }
+    })
+  </script>
+</body>
+</html>

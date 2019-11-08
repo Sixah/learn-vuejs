@@ -12,7 +12,7 @@
 <body>
   <div id="app">
     <ul>
-      <li :class="" v-for="(item,index) in movies">{{item}}</li>
+      <li :class="{active:index===current}" v-for="(item,index) in movies" @click="check(index)">{{item}}</li>
     </ul>
   </div>
 
@@ -21,11 +21,12 @@
     const app = new Vue({
       el: '#app',
       data: {
-        movies: ['海王','海尔兄弟','火影忍者','进击的巨人']
+        movies: ['海王','海尔兄弟','火影忍者','进击的巨人'],
+        current: 0
       },
       methods: {
-        check: function () {
-          return {}
+        check: function (index) {
+          this.current = index;
         }
       }
     })
