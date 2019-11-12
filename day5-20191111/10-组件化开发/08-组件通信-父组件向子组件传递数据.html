@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <!-- 通过v-bind绑定父子通信数据变量 -->
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>{{cmessage}}</h2>
+      <ul>
+        <li v-for="item in cmovies">{{item}}</li>
+      </ul>
+    </div>
+  </template>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      // 在组件中，使用选项props来声明需要从父级接到的数据
+      // props的值有两种方式：
+      // 1. 字符串数组，数组中的字符串就是传递时的名称
+      // 2. 对象，对象可以设置传递时的类型，也可以设置默认值等。
+      // props: ['cmovies','cmessage'],
+      props: {
+        // 1.类型限制
+        // cmovies: Array,
+        // cmessage: String
+
+        // 2.提供一些默认值
+        cmessage: {
+          // 值的类型
+          type: String,
+          // 默认值
+          default: 'sixah',
+          // 必传属性
+          required: true
+        },
+        cmovies: {
+          type: Array,
+          // 类型是对象或者数组时，默认值必须是一个函数
+          default() {
+            return []
+          },
+          required: true
+        }
+      },
+      data() {
+        return {}
+      },
+      methods: {
+
+      }
+    };
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        movies: ['海王','海贼王','海尔兄弟']
+      },
+      components: {
+        cpn
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <cpn @cpnincre="cpnincrement" @cpndecre="cpndecrement"></cpn>
+    <h2>当前计数： {{counter}}</h2>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
+    </div>
+  </template>
+
+  <script src="../../js/vue.js"></script>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      methods: {
+        increment() {
+          this.$emit('cpnincre');
+        },
+        decrement() {
+          this.$emit('cpndecre');
+        }
+      }
+    };
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你真好看！',
+        counter: 0
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        cpnincrement() {
+          this.counter++;
+        },
+        cpndecrement() {
+          this.counter--;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
