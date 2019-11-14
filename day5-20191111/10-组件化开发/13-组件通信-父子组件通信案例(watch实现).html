@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <cpn :cnumber1="number1" :cnumber2="number2" @cn1input="cpn1input" @cn2input="cpn2input"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>父1：{{cnumber1}}</h2>
+    <h2>子1：{{dnum1}}</h2>
+    <!-- <input type="number" :value="dnum1"  @input="dnum1change"> -->
+    <input type="number" v-model="dnum1">
+    <h2>父2：{{cnumber2}}</h2>
+    <h2>子2：{{dnum2}}</h2>
+    <!--       <input type="number" :value="dnum2" @input="dnum2change"> -->
+    <input type="number" v-model="dnum2">
+  </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+  const cpn = {
+    template: '#cpn',
+    data() {
+      return {
+        dnum1:this.cnumber1,
+        dnum2:this.cnumber2
+      }
+    },
+    props: {
+      cnumber1:Number,
+      cnumber2:Number
+    },
+    methods: {
+      // dnum1change(event){
+      //   this.dnum1 = event.target.value;
+      //   this.$emit('cn1input',this.dnum1)
+      // },
+      // dnum2change(event) {
+      //   this.dnum2 = event.target.value;
+      //   this.$emit('cn2input',this.dnum2)
+      // },
+    },
+    watch: {
+      dnum1(newValue) {
+        this.dnum2 = newValue * 100;
+        this.$emit('cn1input',newValue);
+      },
+      dnum2(newValue) {
+        this.dnum1 = newValue / 100;
+        this.$emit('cn2input',newValue)
+      }
+    }
+  };
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你真好看！',
+      number1: 10,
+      number2: 20
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      cpn1input(item) {
+        this.number1=parseInt(item);
+      },
+      cpn2input(item) {
+        this.number2=parseInt(item);
+      }
+    }
+  })
+</script>
+</body>
+</html>
+
