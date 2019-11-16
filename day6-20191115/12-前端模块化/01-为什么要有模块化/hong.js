@@ -1,6 +1,12 @@
 // 小红
+var moduleB = (function () {
+  var obj = {};
+  var name = '小红';
+  var flag = false;
 
-var name = '小红';
-var flag = false
+  console.log(name);
 
-console.log(name);
+  obj.flag = flag;
+  return obj
+})();
+
