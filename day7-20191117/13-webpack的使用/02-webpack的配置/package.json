@@ -1,0 +1,19 @@
+{
+  "?name": "项目名称",
+  "name": "meetwebpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "?build": "执行npm run build执行的命令，优先找本地的webpack,而不是全局的webpack",
+    "build": "webpack"
+  },
+  "?author": "作者信息",
+  "author": "",
+  "license": "ISC",
+  "?devDependencies": "开发阶段依赖",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  }
+}
