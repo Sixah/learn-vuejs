@@ -87,10 +87,25 @@ module.exports = {
             presets: ['es2015']
           },
         }]
-      }
+      },
+      {
+        // 正则表达式 匹配.vue文件结尾的文件
+        // 应用use配置的loader
+        test: /\.vue$/,
+        // 排除node_modules文件夹，不做转化
+        exclude: /(node_modules|bower_components)/,
+        // babel-loader ES6语法转化ES5语法
+
+        // 使用多个loader时，是从右向左应用
+        use: [{
+          loader: 'vue-loader',
+        }]
+      },
     ]
   },
   resolve: {
+    // 省略文件后缀
+    extensions: ['.js','.css','.vue'],
     // alias: 别名
     alias: {
       'vue$': 'vue/dist/vue.esm.js'

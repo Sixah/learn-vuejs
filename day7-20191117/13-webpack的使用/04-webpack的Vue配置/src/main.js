@@ -32,23 +32,12 @@ document.writeln('<h2>Sixah</h2>');
 // 2.runtime-compiler 代码中，可以有template,因为有compiler可以用于编译template代码
 
 import Vue from 'vue'
-
+// import App from './vue/app'
+import App from './vue/App.vue'
 new Vue({
   el:'#app',
-  template: `
-    <div>
-      <h2>{{message}}</h2>
-      <button @click="btnClick">按钮</button>
-      <h2>{{name}}</h2>
-    </div>>
-  `,
-  data: {
-    message: '大哥，你的盔甲没有我的好看',
-    name: '吕小布'
-  },
-  methods: {
-    btnClick() {
-      document.writeln('<span>吕小布在此</span>')
-    }
+  template: '<App/>',
+  components: {
+    App
   }
 });

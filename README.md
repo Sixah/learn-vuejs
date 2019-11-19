@@ -18,5 +18,7 @@
 `npm install --save-dev file-loader`
 - babel-loader ES6语法转化ES5
 `npm install --save-dev babel-loader@7 babel-core babel-preset-es2015`
+- vue-loader 解析.vue文件
+`npm install --save-dev vue-loader vue-template-compiler`
 ####引入Vue.js
 `npm install vue --save`
