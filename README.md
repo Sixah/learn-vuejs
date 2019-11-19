@@ -1,11 +1,11 @@
-### 学习Vue.js笔记
+## 学习Vue.js笔记
 [[王红元老师]视频教程地址](https://www.bilibili.com/video/av59594689?from=search&seid=11169775368757894383)
 - 各个知识点讲的很全面
 - 评价超高的Vuejs视频教程
 
-####webpack局部安装
+### webpack局部安装
 `npm install webpack@3.6.0 --save-dev`
-####loader局部安装
+### loader局部安装
 - css-loader 加载解析css文件
 `npm install --save-dev css-loader`
 - style-loader 应用解析后的css到DOM中
@@ -20,16 +20,39 @@
 `npm install --save-dev babel-loader@7 babel-core babel-preset-es2015`
 - vue-loader 解析.vue文件
 `npm install --save-dev vue-loader vue-template-compiler`
-####引入Vue.js
+### 引入Vue.js
 `npm install vue --save`
-####Plugin安装
+### Plugin安装
 - html-webpack-plugin 自动生成index.html文件，将打包的js文件自动通过script标签插入到body中
 `npm install --save-dev html-webpack-plugin`
 - uglifyjs-webpack-plugin 压缩打包的js文件
 `npm install --save-dev uglifyjs-webpack-plugin@1.1.1`
-####搭建本地服务器
+### 搭建本地服务器
 - webpack-dev-server
 `npm install --save-dev webpack-dev-server@2.9.1`
-####webpack配置分离
+### webpack配置分离
 - webpack-merge
 `npm install --save-dev webpack-merge`
+###安装Vue脚手架(Vue-cli 3)
+`npm install -g @vue/cli`
+- #### Vue CLI3初始化项目
+`npm create my-project`
+- #### 拉取2.x模板(旧版本)
+`npm install -g @vue/cli-init`
+- #### Vue CLI2初始化项目
+`vue init webpack my-project`
+选项 | 作用 |
+:-: | :-: |
+Project name | 项目名称 |
+Project description | 项目描述 |
+Author | 作者信息 |
+Vue build | 选择Vue版本(Runtime-Compiler|Runtime-only) |
+vue-router | vue路由器 |
+ESLint | 是否启用es代码规范 |
+Pick ESLint | 选择es代码规范 |
+unit tests | 是否集成单元测试 |
+e2e tests | 是否安装自动化测试框架 |
+npm install | 选择npm包管理工具(npm|yarn) |
+
+
+
