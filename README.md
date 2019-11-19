@@ -22,3 +22,11 @@
 `npm install --save-dev vue-loader vue-template-compiler`
 ####引入Vue.js
 `npm install vue --save`
+####Plugin安装
+- html-webpack-plugin 自动生成index.html文件，将打包的js文件自动通过script标签插入到body中
+`npm install --save-dev html-webpack-plugin`
+- uglifyjs-webpack-plugin 压缩打包的js文件
+`npm install --save-dev uglifyjs-webpack-plugin@1.1.1`
+####搭建本地服务器
+- webpack-dev-server
+`npm install --save-dev webpack-dev-server@2.9.1`
