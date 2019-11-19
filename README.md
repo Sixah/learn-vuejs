@@ -30,3 +30,6 @@
 ####搭建本地服务器
 - webpack-dev-server
 `npm install --save-dev webpack-dev-server@2.9.1`
+####webpack配置分离
+- webpack-merge
+`npm install --save-dev webpack-merge`
