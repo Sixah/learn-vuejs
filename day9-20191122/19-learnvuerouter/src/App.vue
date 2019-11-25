@@ -32,10 +32,15 @@
     <button @click="userClick">用户</button>
     <button @click="profileClick">档案</button>
     <h1>你真好看！</h1>
-    <!-- router-view
+    <!-- keep-alive
+    该标签会缓存组件，离开某个组件页面的时候不会销毁该组件
+    include属性，字符串或者正则表达式，只有匹配的组件会被缓存
+    exclude属性，字符串或者正则表达式，任何匹配的组件都不会被缓存
+     -->
+    <keep-alive exclude="Profile,User">
+      <!-- router-view
      该标签会根据当前的路径，动态渲染出不同的组件
      -->
-    <keep-alive>
       <router-view></router-view>
     </keep-alive>
     <h1>Sixah</h1>
