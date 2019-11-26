@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  new Promise((resolve,reject) => {
+    setTimeout(() => {
+      // resolve('Hello Vuejs')
+      reject('Good Bye')
+    },1000)
+    // then()中可以传入两个函数参数，第一个参数处理resolve结果逻辑，第二个参数处理reject结果逻辑
+  }).then((data) => {
+    console.log(data);
+  }, (err) => {
+    console.log(err);
+  })
+</script>
+</body>
+</html>

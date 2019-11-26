@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  // 参数 -> 函数(resolve,reject)
+  // resolve,reject本身也是函数
+  // 链式编程
+  new Promise((resolve,reject) => {
+    // 第一次请求
+    setTimeout(() => {
+      resolve()
+    },1000)
+  }).then(() => {
+    // 第一次请求结果处理
+    console.log('Hello World');
+    console.log('Hello World');
+    console.log('Hello World');
+    console.log('Hello World');
+    console.log('Hello World');
+
+    return new Promise((resolve,reject) => {
+      // 第二次请求
+      setTimeout(() => {
+        resolve()
+      },1000)
+    })
+  }).then(() => {
+    // 第二次请求结果处理
+    console.log('Hello Vuejs');
+    console.log('Hello Vuejs');
+    console.log('Hello Vuejs');
+    console.log('Hello Vuejs');
+    console.log('Hello Vuejs');
+
+    return new Promise((resolve,reject) => {
+      // 第三次请求
+      setTimeout(() => {
+        resolve()
+      },1000)
+    })
+  }).then(() => {
+    // 第三次请求结果处理
+    console.log('Hello Golang');
+    console.log('Hello Golang');
+    console.log('Hello Golang');
+    console.log('Hello Golang');
+    console.log('Hello Golang');
+  })
+</script>
+</body>
+</html>

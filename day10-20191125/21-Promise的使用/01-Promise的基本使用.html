@@ -12,16 +12,33 @@
   //   console.log('Hello World');
   // },1000)
 
-  // 参数 -> 函数(resolve,reject)
-  // resolve,reject本身也是函数
+  // 什么情况下使用Promise?
+  // 一般情况下是有异步操作时，使用Promise对这个异步操作进行封装
+  // new -> 构造函数(1.保存一些状体信息 2.执行传入的函数)
+  // 在执行传入的回调函数时，会传入两个参数，resolve,reject 本身又是函数
   new Promise((resolve,reject) => {
     setTimeout(() => {
-      console.log('Hello World');
-      console.log('Hello World');
-      console.log('Hello World');
-      console.log('Hello World');
+      // 成功的时候调用resolve 在then中处理正确的逻辑
+      // resolve('hello linux')
+
+      // 失败的时候调用reject 在catch中处理错误的逻辑
+      reject('error message')
     },1000)
+  }).then((data) => {
+    // 异步处理逻辑
+    console.log(data);
+    console.log(data);
+    console.log(data);
+  }).catch((err) => {
+    console.log(err);
+    console.log(err);
+    console.log(err);
   })
+
+  // Promise有三种状态
+  // 1.pending: 等待状态，比如正在进行网络请求，或者定时器没有到时间
+  // 2.fulfill: 满足状态，当我们主动回调了resolve时，就处于该状态，并且会回调.then()
+  // 3.reject: 拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调.catch()
 </script>
 </body>
 </html>
