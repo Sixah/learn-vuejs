@@ -104,3 +104,6 @@ npm install | 选择npm包管理工具(npm/yarn) |
 - vue-cli3的设计原则是“0配置”，移除的配置文件根目录下的`build`和`config`等目录
 - vue-cli3提供了vue ui命令，提供了可视化配置，更加人性化
 - 移除了`static`文件夹，新增了`public`文件夹，并且`index.html`移动到`public`中
+
+### 安装Vuex
+`npm install vuex --save`
