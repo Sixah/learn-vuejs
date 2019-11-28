@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <h2>------App内容：modules中内容------</h2>
+    <h2>{{$store.state.a.name}}</h2>
+    <button @click="updateName">修改名字</button>
+    <h2>{{$store.getters.fullName}}</h2>
+    <h2>{{$store.getters.fullName2}}</h2>
+    <h2>{{$store.getters.fullName3}}</h2>
+    <button @click="asyncUpdateName">异步修改名字</button>
     <h2>-----APP组件内容-----</h2>
     <h3>{{$store.state.counter}}</h3>
     <button @click="addition">+</button>
@@ -24,6 +31,9 @@
 
 <script>
   import HelloVuex from './components/HelloVuex'
+  import {
+    INCREMENT
+  } from './store/mutations-types'
 export default {
   name: 'App',
   data() {
@@ -36,7 +46,8 @@ export default {
   },
   methods: {
     addition() {
-      this.$store.commit('increment')
+      // this.$store.commit('increment')
+      this.$store.commit(INCREMENT)
     },
     subtraction() {
       this.$store.commit('decrement')
@@ -60,7 +71,32 @@ export default {
       this.$store.commit('addStudent',su)
     },
     updateInfo() {
-      this.$store.commit('updateInfo')
+      // 调用mutations
+      // this.$store.commit('updateInfo')
+
+      // 调用actions
+      // 可以传递字符串参数
+      // this.$store.dispatch('aUpdateInfo','我是payload')
+      // 也可以是复杂的对象
+      // this.$store.dispatch('aUpdateInfo',{
+      //   message:"我是携带的信息",
+      //   success: () => {
+      //     console.log('工作完成了');
+      //   }
+      // })
+      // 更优雅的方式
+      this.$store.dispatch('aUpdateInfo','我是携带的信息').then(
+        res => {
+          console.log('工作完成了');
+          console.log(res);
+        }
+      )
+    },
+    updateName() {
+      this.$store.commit('updateName','lisi')
+    },
+    asyncUpdateName() {
+      this.$store.dispatch('aUpdateName')
     }
   },
   computed: {
