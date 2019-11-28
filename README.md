@@ -107,3 +107,5 @@ npm install | 选择npm包管理工具(npm/yarn) |
 
 ### 安装Vuex
 `npm install vuex --save`
+### 安装axios
+`npm install axios --save`
