@@ -18,9 +18,9 @@ new Vue({
   url: 'http://123.207.32.32:8000/home/multidata',
 }).then(res => {
   console.log(res);
-})
+})*/
 
-axios({
+/*axios({
   url: 'http://123.207.32.32:8000/home/multidata',
   method: 'post',
   // post请求 数据存放在data中，不能放在params中
@@ -97,34 +97,33 @@ axios.all([
 /*const instance1 = axios.create({
   baseURL: 'http://123.207.32.32:8000',
   timeout: 5000
-})
-
-instance1({
-  url: '/home/multidata'
-}).then(res => {
-  console.log(res);
-})
-
-instance1({
-  url: '/home/data',
-  params: {
-    type: 'pop',
-    page: 2
-  }
-}).then(res => {
-  console.log(res);
 })*/
 
-// 5.封装request模块
-import {request} from "./network/request";
-
-// request({
+// instance1({
 //   url: '/home/multidata'
-// }, res => {
-//   console.log(res);
-// }, err => {
-//   console.log(err);
 // })
+
+// instance1({
+//   url: '/home/data',
+//   params: {
+//     type: 'pop',
+//     page: 2
+//   }
+// }).then(res => {
+//   console.log(res);
+// })
+
+
+// 5.封装request模块
+/*import {request} from "./network/request";
+
+request({
+  url: '/home/multidata'
+}, res => {
+  console.log(res);
+}, err => {
+  console.log(err);
+})*/
 
 /*request({
   baseConfig: {
@@ -138,13 +137,13 @@ import {request} from "./network/request";
   }
 })*/
 
-request({
+/*request({
   url: '/home/multidata'
 }).then(res => {
   console.log(res);
 }).catch(err => {
   console.log(err);
-})
+})*/
 
 import {request1} from "./network/request";
 
