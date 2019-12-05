@@ -1,5 +1,5 @@
 <template>
-  <tab-bar>
+  <tab-bar class="tab-bar">
     <tab-bar-item path="/home">
       <img slot="item-icon" src="~assets/img/tabbar/home.svg" alt="">
       <img slot="item-icon-active" src="~assets/img/tabbar/home_active.svg" alt="">
@@ -37,5 +37,10 @@
 </script>
 
 <style scoped>
-
+  .tab-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 49px;
+  }
 </style>
