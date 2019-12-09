@@ -1,13 +1,17 @@
 import {request} from './request'
+import baseurl from '@/config/config.env'
+
 
 export function getHomeMultidata() {
   return request({
+    baseurl: baseurl.URL,
     url: '/home/multidata'
   })
 }
 
 export function getHomeGoods(type, page) {
   return request({
+    baseurl: baseurl.URL,
     url: '/home/data',
     params: {
       type,

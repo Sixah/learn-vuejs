@@ -14,6 +14,7 @@
     props: {
       titles: {
         type: Array,
+        // 当值类型是对象或者数组时，设置默认值的default必须是一个函数
         default() {
           return []
         }

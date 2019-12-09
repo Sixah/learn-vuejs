@@ -1,10 +1,10 @@
 import axios from 'axios'
-import baseurl from '@/config/config.env'
-
+// import baseurl from '@/config/config.env'
 export function request(config) {
   // 1.创建axios的实例
   const instance = axios.create({
-    baseURL: baseurl.URL,
+    // baseURL: baseurl.URL,
+    baseURL: config.baseurl,
     timeout: 5000,
   })
   // 2.axios的拦截器
