@@ -11,6 +11,13 @@ export function getDetail(id) {
   })
 }
 
+export function getRecommend() {
+  return request({
+    baseurl: baseurl.DETAILURL,
+    url: '/recommend'
+  })
+}
+
 export class Goods {
   constructor(itemInfo,columns,services) {
     this.title = itemInfo.title

@@ -39,7 +39,7 @@
   import BackTop from 'components/content/backTop/BackTop'
 
   import {getHomeMultidata,getHomeGoods} from 'network/home';
-  import {debounce} from "common/utils";
+  import {itemListennerMixin} from "common/mixin";
 
   export default {
     name: "Home",
@@ -53,6 +53,7 @@
       Scroll,
       BackTop
     },
+    mixins: [itemListennerMixin],
     data() {
       return {
         banners: [],
@@ -66,7 +67,7 @@
         isShowBackTop: false,
         tabOffsetTop: 0,
         isTabFixed: false,
-        saveY: 0
+        saveY: 0,
       }
     },
     created() {
@@ -79,16 +80,6 @@
       this.getHomeGoods('sell')
     },
     mounted() {
-      // 1.监听item中图片加载完成
-      const refresh = debounce(this.$refs.scroll.refresh,500)
-
-      this.$bus.$on('itemImageLoad', () => {
-        // this.$refs.scroll.refresh()
-        refresh()
-      })
-
-      // 2.获取tabControl的offsetTop
-      // 所有的组件都有一个属性$el,用于获取组件中的元素
 
     },
     computed: {
@@ -97,12 +88,16 @@
       }
     },
     activated() {
-      this.$refs.scroll.refresh()
       this.$refs.scroll.scrollTo(0,this.saveY,0)
+      this.$refs.scroll.refresh()
 
     },
     deactivated() {
+      // 保存Y值
       this.saveY = this.$refs.scroll.getScrollY()
+
+      // 取消全局事件的监听
+      this.$bus.$off('itemImageLoad',this.itemImgListener)
     },
     methods: {
       /**
@@ -138,6 +133,8 @@
         this.getHomeGoods(this.currentType)
       },
       swiperImageLoad() {
+        // 2.获取tabControl的offsetTop
+        // 所有的组件都有一个属性$el,用于获取组件中的元素
         this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop
       },
 

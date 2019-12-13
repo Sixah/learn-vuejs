@@ -22,6 +22,13 @@
       Swiper,
       SwiperItem
     },
+    watch: {
+      topImages(newValue,oldValue) {
+        if (newValue !== oldValue) {
+          this.topImages = newValue
+        }
+      }
+    }
   }
 </script>
 

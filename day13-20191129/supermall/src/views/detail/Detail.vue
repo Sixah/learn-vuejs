@@ -7,6 +7,8 @@
       <detail-shop-info :shop="shop"/>
       <detail-goods-info :detail-info="detailInfo" @imageLoad="imgLoad"/>
       <detail-param-info :param-info="paramInfo"/>
+      <detail-comment-info :comment-info="commentInfo"/>
+      <goods-list :goods="recommends"/>
     </scroll>
   </div>
 </template>
@@ -18,10 +20,13 @@
   import DetailShopInfo from './childComps/DetailShopInfo'
   import DetailGoodsInfo from './childComps/DetailGoodsInfo'
   import DetailParamInfo from './childComps/DetailParamInfo'
+  import DetailCommentInfo from './childComps/DetailCommentInfo'
 
   import Scroll from 'components/common/scroll/Scroll'
+  import GoodsList from 'components/content/goods/GoodsList'
 
-  import {getDetail,Goods,Shop,GoodsParam} from "network/detail";
+  import {getDetail,getRecommend,Goods,Shop,GoodsParam} from "network/detail";
+  import {itemListennerMixin} from "common/mixin";
 
   export default {
     name: "Detail",
@@ -32,8 +37,12 @@
       DetailShopInfo,
       DetailGoodsInfo,
       DetailParamInfo,
+      DetailCommentInfo,
       Scroll,
+      GoodsList
     },
+    // 代码混入
+    mixins: [itemListennerMixin],
     data() {
       return {
         iid: '',
@@ -41,7 +50,9 @@
         goods: {},
         shop: {},
         detailInfo: {},
-        paramInfo: {}
+        paramInfo: {},
+        commentInfo: {},
+        recommends: [],
       }
     },
     methods: {
@@ -49,16 +60,11 @@
         this.$refs.scroll.refresh()
       }
     },
-    // computed: {
-    //   getGoodsId() {
-    //     return this.$route.params.id
-    //   },
-    //   getGoods() {
-    //     return this.goods
-    //   }
-    // },
     created() {
+      // 获取iid
       this.iid = this.$route.params.id
+
+      // 获取详情页数据
       getDetail(this.iid).then(res => {
         console.log(res);
         // 1.获取顶部的图片轮播数据
@@ -77,7 +83,22 @@
 
         // 5.获取详情参数信息
         this.paramInfo = new GoodsParam(data.itemParams.info,data.itemParams.rule)
+
+        // 6.获取评价信息
+        if (data.rate.list.length !== 0) {
+          this.commentInfo = data.rate.list[0]
+        }
       })
+
+      // 获取推荐数据
+      getRecommend().then(res => {
+          this.recommends = res.data.list
+        })
+    },
+    mounted() {
+    },
+    destroyed() {
+      this.$bus.$off('itemImagLoad', this.itemImgListener)
     }
   }
 </script>
