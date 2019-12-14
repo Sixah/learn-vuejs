@@ -1,14 +1,14 @@
 <template>
   <div id="detail">
-    <detail-nav-bar class="detail-nav"></detail-nav-bar>
+    <detail-nav-bar class="detail-nav" @titleClick="titleClick"></detail-nav-bar>
     <scroll class="content" ref="scroll">
       <detail-swiper :top-images="topImages"/>
       <detail-base-info :goods="goods"/>
       <detail-shop-info :shop="shop"/>
       <detail-goods-info :detail-info="detailInfo" @imageLoad="imgLoad"/>
-      <detail-param-info :param-info="paramInfo"/>
-      <detail-comment-info :comment-info="commentInfo"/>
-      <goods-list :goods="recommends"/>
+      <detail-param-info ref="params" :param-info="paramInfo"/>
+      <detail-comment-info ref="comment" :comment-info="commentInfo"/>
+      <goods-list ref="recommend" :goods="recommends"/>
     </scroll>
   </div>
 </template>
@@ -53,11 +53,21 @@
         paramInfo: {},
         commentInfo: {},
         recommends: [],
+        themeTopYs: []
       }
     },
     methods: {
       imgLoad() {
         this.$refs.scroll.refresh()
+
+        this.themeTopYs = []
+        this.themeTopYs.push(0)
+        this.themeTopYs.push(this.$refs.params.$el.offsetTop)
+        this.themeTopYs.push(this.$refs.comment.$el.offsetTop)
+        this.themeTopYs.push(this.$refs.recommend.$el.offsetTop)
+      },
+      titleClick(index) {
+        this.$refs.scroll.scrollTo(0,-this.themeTopYs[index]+44,100)
       }
     },
     created() {
@@ -88,6 +98,17 @@
         if (data.rate.list.length !== 0) {
           this.commentInfo = data.rate.list[0]
         }
+
+/*        this.$nextTick(() => {
+          // 根据最新的数据，对应的DOM是已经被渲染出来的
+          // 但是图片依然是没有加载完（目前获取到offsetTop不包含其中图片的高度）
+          // offsetTop值不对的时候，一般都是图片的问题
+          this.themeTopYs = []
+          this.themeTopYs.push(0)
+          this.themeTopYs.push(this.$refs.params.$el.offsetTop)
+          this.themeTopYs.push(this.$refs.comment.$el.offsetTop)
+          this.themeTopYs.push(this.$refs.recommend.$el.offsetTop)
+        })*/
       })
 
       // 获取推荐数据

@@ -26,17 +26,17 @@
         }
       }
     },
-    deta() {
+    data() {
       return {
         counter: 0,
-        imageLength: 0
+        imageLength: 0,
       }
     },
     methods: {
       imgLoad() {
-          if (++this.counter === this.imageLength) {
+        if (++this.counter === this.imageLength) {
             this.$emit('imageLoad')
-          }
+        }
       }
     },
     watch: {
