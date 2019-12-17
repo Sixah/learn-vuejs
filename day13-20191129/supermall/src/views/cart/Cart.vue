@@ -1,13 +1,39 @@
 <template>
-  <h2>购物车</h2>
+  <div class="cart">
+    <nav-bar class="nav-bar">
+      <div slot="center">购物车({{length}})</div>
+    </nav-bar>
+
+    <cart-list/>
+  </div>
 </template>
 
 <script>
+  import NavBar from 'components/common/navbar/NavBar'
+  import CartList from './childComps/CartList'
+  import {mapGetters} from 'vuex'
+
   export default {
-    name: "Cart"
+    name: "Cart",
+    components: {
+      NavBar,
+      CartList
+    },
+    computed: {
+      // 第一种语法
+      // ...mapGetters(['cartLength']),
+
+      // 第二种语法(可以自定义变量名)
+        ...mapGetters({
+          length: 'cartLength'
+        })
+    }
   }
 </script>
 
 <style scoped>
-
+  .nav-bar {
+    background-color: var(--color-tint);
+    color: #fff;
+  }
 </style>
