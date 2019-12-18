@@ -1,5 +1,5 @@
 <template>
-  <div class="check-button" @click="BtnClick">
+  <div class="check-button" @click="BtnClick" :class="{check:isChecked}">
     <img src="~assets/img/cart/tick.svg" alt="">
   </div>
 </template>
@@ -23,6 +23,12 @@
 
 <style scoped>
   .check-button {
+    border: 2px solid #aaa;
+    border-radius: 50%;
+  }
 
+  .check {
+    border-color: red;
+    background-color: #ff5777;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="cart-item">
     <div class="item-selector">
-      <check-button @checkBtnClick="checkedChange" :value="product.checked"></check-button>
+      <check-button :is-checked="product.checked" @click.native="checkClick"/>
     </div>
     <div class="item-img">
       <img :src="product.image" alt="商品图片">
@@ -34,8 +34,8 @@
       }
     },
     methods: {
-      checkedChange() {
-
+      checkClick() {
+        this.product.checked = !this.product.checked
       }
     }
   }

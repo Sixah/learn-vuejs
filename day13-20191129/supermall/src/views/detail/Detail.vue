@@ -12,6 +12,7 @@
     </scroll>
     <detail-bottom-bar @addCart="addToCart"/>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
+    <toast message="哈哈哈哈"/>
   </div>
 </template>
 
@@ -26,10 +27,12 @@
   import DetailBottomBar from './childComps/DetailBottomBar'
 
   import Scroll from 'components/common/scroll/Scroll'
+  import Toast from 'components/common/toast/Toast'
   import GoodsList from 'components/content/goods/GoodsList'
 
   import {getDetail,getRecommend,Goods,Shop,GoodsParam} from "network/detail";
   import {itemListennerMixin,backTopMixin} from "common/mixin";
+  import {mapActions} from 'vuex'
 
   export default {
     name: "Detail",
@@ -43,7 +46,8 @@
       DetailCommentInfo,
       DetailBottomBar,
       Scroll,
-      GoodsList
+      GoodsList,
+      Toast
     },
     // 代码混入
     mixins: [itemListennerMixin,backTopMixin],
@@ -61,6 +65,7 @@
       }
     },
     methods: {
+      ...mapActions(['addCart']),
       imgLoad() {
         this.$refs.scroll.refresh()
 
@@ -114,7 +119,9 @@
         product.desc = this.goods.desc
         product.price = this.goods.realPrice
         // 2.将商品添加到购物车
-        this.$store.dispatch('addCart',product)
+        this.addCart(product).then(res => {
+
+        })
       }
     },
     created() {
