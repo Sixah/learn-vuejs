@@ -12,7 +12,7 @@
     </scroll>
     <detail-bottom-bar @addCart="addToCart"/>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
-    <toast message="哈哈哈哈"/>
+    <!--<toast message="哈哈哈哈"/>-->
   </div>
 </template>
 
@@ -27,7 +27,7 @@
   import DetailBottomBar from './childComps/DetailBottomBar'
 
   import Scroll from 'components/common/scroll/Scroll'
-  import Toast from 'components/common/toast/Toast'
+  // import Toast from 'components/common/toast/Toast'
   import GoodsList from 'components/content/goods/GoodsList'
 
   import {getDetail,getRecommend,Goods,Shop,GoodsParam} from "network/detail";
@@ -47,7 +47,7 @@
       DetailBottomBar,
       Scroll,
       GoodsList,
-      Toast
+      // Toast
     },
     // 代码混入
     mixins: [itemListennerMixin,backTopMixin],
@@ -120,7 +120,7 @@
         product.price = this.goods.realPrice
         // 2.将商品添加到购物车
         this.addCart(product).then(res => {
-
+          this.$toast.show(res,2000)
         })
       }
     },

@@ -109,5 +109,11 @@ npm install | 选择npm包管理工具(npm/yarn) |
 `npm install vuex --save`
 ### 安装axios
 `npm install axios --save`
-### 安装better-scroll
+### 安装better-scroll滑动效果
 `npm install better-scroll --save`
+### 安装fastclick快速点击
+`npm install fastclick --save`
+### 安装vue-lazyload图片懒加载
+`npm install vue-lazyload --save`
+### 安装postcss-px-to-viewport
+`npm install postcss-px-to-viewport --save-dev`
